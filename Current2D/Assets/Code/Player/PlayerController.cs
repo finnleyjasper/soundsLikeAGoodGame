@@ -1,53 +1,45 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveDistance = 1f; // distance per button press
-    private Vector3 targetPosition;
+    [SerializeField] private float moveSpeed = 2f; // distance per button press
+    public Transform movePoint;
+
+    public LayerMask whatStopsMovement; // things on this layer will stop player movement
 
     void Start()
     {
-        targetPosition = transform.position;
+        movePoint.parent = null;
     }
 
      void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
+
+        if(Vector3.Distance(transform.position, movePoint.position) <= .01f)
         {
-            float moveX = 0;
-            Debug.Log("Horizontal Input detected");
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
-                moveX = -1;
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, whatStopsMovement))
+                {
+                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                }
+                else{
+                    Debug.Log("Theres a wall");
+                }
             }
 
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
             {
-                moveX = 1;
+                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, whatStopsMovement))
+                {
+                    movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                }
+                else{
+                    Debug.Log("Theres a wall");
+                }
             }
-
-            targetPosition += new Vector3(moveX * moveDistance, 0, 0);
         }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            float moveZ = 0;
-            Debug.Log("Vertical Input detected");
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                moveZ = 1;
-            }
-
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                moveZ = -1;
-            }
-
-            targetPosition += new Vector3(0, 0, moveZ * moveDistance);
-        }
-
-        transform.position = targetPosition;
     }
 }
