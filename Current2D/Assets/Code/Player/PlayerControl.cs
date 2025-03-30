@@ -174,6 +174,94 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerSoundSearch"",
+            ""id"": ""273c8f99-92d2-4db5-8f24-d1a8696d31ac"",
+            ""actions"": [
+                {
+                    ""name"": ""CheckLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""75a44a3a-d786-490e-8004-a8d5e84d514c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CheckRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""1fb74563-3977-41d3-9453-ddbbe286b1c9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CheckFront"",
+                    ""type"": ""Button"",
+                    ""id"": ""6754ae11-f241-46df-96d7-7f264e0250b1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CheckBehind"",
+                    ""type"": ""Button"",
+                    ""id"": ""e78711eb-b435-48cf-a454-bbb9ef46d03e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""802fec1f-199f-4493-a04a-593476ddb972"",
+                    ""path"": ""<HID::Bensussen Deutsch & Associates,Inc.(BDA) Core (Plus) Wired Controller>/button7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef62b362-5bc0-4eba-b696-049b4f8c3def"",
+                    ""path"": ""<HID::Bensussen Deutsch & Associates,Inc.(BDA) Core (Plus) Wired Controller>/button8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a1243f5-351d-4fda-99a7-43a4c33716ab"",
+                    ""path"": ""<HID::Bensussen Deutsch & Associates,Inc.(BDA) Core (Plus) Wired Controller>/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckFront"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3de7cf53-8d13-427e-a409-ac14af8cc23b"",
+                    ""path"": ""<HID::Bensussen Deutsch & Associates,Inc.(BDA) Core (Plus) Wired Controller>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckBehind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -184,11 +272,18 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_PlayerMoveInputs_PlayerMoveRight = m_PlayerMoveInputs.FindAction("PlayerMoveRight", throwIfNotFound: true);
         m_PlayerMoveInputs_PlayerMoveUp = m_PlayerMoveInputs.FindAction("PlayerMoveUp", throwIfNotFound: true);
         m_PlayerMoveInputs_PlayerMoveDown = m_PlayerMoveInputs.FindAction("PlayerMoveDown", throwIfNotFound: true);
+        // PlayerSoundSearch
+        m_PlayerSoundSearch = asset.FindActionMap("PlayerSoundSearch", throwIfNotFound: true);
+        m_PlayerSoundSearch_CheckLeft = m_PlayerSoundSearch.FindAction("CheckLeft", throwIfNotFound: true);
+        m_PlayerSoundSearch_CheckRight = m_PlayerSoundSearch.FindAction("CheckRight", throwIfNotFound: true);
+        m_PlayerSoundSearch_CheckFront = m_PlayerSoundSearch.FindAction("CheckFront", throwIfNotFound: true);
+        m_PlayerSoundSearch_CheckBehind = m_PlayerSoundSearch.FindAction("CheckBehind", throwIfNotFound: true);
     }
 
     ~@PlayerControl()
     {
         UnityEngine.Debug.Assert(!m_PlayerMoveInputs.enabled, "This will cause a leak and performance issues, PlayerControl.PlayerMoveInputs.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerSoundSearch.enabled, "This will cause a leak and performance issues, PlayerControl.PlayerSoundSearch.Disable() has not been called.");
     }
 
     /// <summary>
@@ -389,6 +484,135 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PlayerMoveInputsActions" /> instance referencing this action map.
     /// </summary>
     public PlayerMoveInputsActions @PlayerMoveInputs => new PlayerMoveInputsActions(this);
+
+    // PlayerSoundSearch
+    private readonly InputActionMap m_PlayerSoundSearch;
+    private List<IPlayerSoundSearchActions> m_PlayerSoundSearchActionsCallbackInterfaces = new List<IPlayerSoundSearchActions>();
+    private readonly InputAction m_PlayerSoundSearch_CheckLeft;
+    private readonly InputAction m_PlayerSoundSearch_CheckRight;
+    private readonly InputAction m_PlayerSoundSearch_CheckFront;
+    private readonly InputAction m_PlayerSoundSearch_CheckBehind;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "PlayerSoundSearch".
+    /// </summary>
+    public struct PlayerSoundSearchActions
+    {
+        private @PlayerControl m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public PlayerSoundSearchActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSoundSearch/CheckLeft".
+        /// </summary>
+        public InputAction @CheckLeft => m_Wrapper.m_PlayerSoundSearch_CheckLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSoundSearch/CheckRight".
+        /// </summary>
+        public InputAction @CheckRight => m_Wrapper.m_PlayerSoundSearch_CheckRight;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSoundSearch/CheckFront".
+        /// </summary>
+        public InputAction @CheckFront => m_Wrapper.m_PlayerSoundSearch_CheckFront;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSoundSearch/CheckBehind".
+        /// </summary>
+        public InputAction @CheckBehind => m_Wrapper.m_PlayerSoundSearch_CheckBehind;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_PlayerSoundSearch; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="PlayerSoundSearchActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(PlayerSoundSearchActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="PlayerSoundSearchActions" />
+        public void AddCallbacks(IPlayerSoundSearchActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerSoundSearchActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerSoundSearchActionsCallbackInterfaces.Add(instance);
+            @CheckLeft.started += instance.OnCheckLeft;
+            @CheckLeft.performed += instance.OnCheckLeft;
+            @CheckLeft.canceled += instance.OnCheckLeft;
+            @CheckRight.started += instance.OnCheckRight;
+            @CheckRight.performed += instance.OnCheckRight;
+            @CheckRight.canceled += instance.OnCheckRight;
+            @CheckFront.started += instance.OnCheckFront;
+            @CheckFront.performed += instance.OnCheckFront;
+            @CheckFront.canceled += instance.OnCheckFront;
+            @CheckBehind.started += instance.OnCheckBehind;
+            @CheckBehind.performed += instance.OnCheckBehind;
+            @CheckBehind.canceled += instance.OnCheckBehind;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="PlayerSoundSearchActions" />
+        private void UnregisterCallbacks(IPlayerSoundSearchActions instance)
+        {
+            @CheckLeft.started -= instance.OnCheckLeft;
+            @CheckLeft.performed -= instance.OnCheckLeft;
+            @CheckLeft.canceled -= instance.OnCheckLeft;
+            @CheckRight.started -= instance.OnCheckRight;
+            @CheckRight.performed -= instance.OnCheckRight;
+            @CheckRight.canceled -= instance.OnCheckRight;
+            @CheckFront.started -= instance.OnCheckFront;
+            @CheckFront.performed -= instance.OnCheckFront;
+            @CheckFront.canceled -= instance.OnCheckFront;
+            @CheckBehind.started -= instance.OnCheckBehind;
+            @CheckBehind.performed -= instance.OnCheckBehind;
+            @CheckBehind.canceled -= instance.OnCheckBehind;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerSoundSearchActions.UnregisterCallbacks(IPlayerSoundSearchActions)" />.
+        /// </summary>
+        /// <seealso cref="PlayerSoundSearchActions.UnregisterCallbacks(IPlayerSoundSearchActions)" />
+        public void RemoveCallbacks(IPlayerSoundSearchActions instance)
+        {
+            if (m_Wrapper.m_PlayerSoundSearchActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="PlayerSoundSearchActions.AddCallbacks(IPlayerSoundSearchActions)" />
+        /// <seealso cref="PlayerSoundSearchActions.RemoveCallbacks(IPlayerSoundSearchActions)" />
+        /// <seealso cref="PlayerSoundSearchActions.UnregisterCallbacks(IPlayerSoundSearchActions)" />
+        public void SetCallbacks(IPlayerSoundSearchActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerSoundSearchActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerSoundSearchActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="PlayerSoundSearchActions" /> instance referencing this action map.
+    /// </summary>
+    public PlayerSoundSearchActions @PlayerSoundSearch => new PlayerSoundSearchActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerMoveInputs" which allows adding and removing callbacks.
     /// </summary>
@@ -424,5 +648,41 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPlayerMoveDown(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerSoundSearch" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="PlayerSoundSearchActions.AddCallbacks(IPlayerSoundSearchActions)" />
+    /// <seealso cref="PlayerSoundSearchActions.RemoveCallbacks(IPlayerSoundSearchActions)" />
+    public interface IPlayerSoundSearchActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "CheckLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCheckLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CheckRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCheckRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CheckFront" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCheckFront(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CheckBehind" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCheckBehind(InputAction.CallbackContext context);
     }
 }

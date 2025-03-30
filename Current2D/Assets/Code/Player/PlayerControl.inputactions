@@ -88,6 +88,94 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "PlayerSoundSearch",
+            "id": "273c8f99-92d2-4db5-8f24-d1a8696d31ac",
+            "actions": [
+                {
+                    "name": "CheckLeft",
+                    "type": "Button",
+                    "id": "75a44a3a-d786-490e-8004-a8d5e84d514c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheckRight",
+                    "type": "Button",
+                    "id": "1fb74563-3977-41d3-9453-ddbbe286b1c9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheckFront",
+                    "type": "Button",
+                    "id": "6754ae11-f241-46df-96d7-7f264e0250b1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CheckBehind",
+                    "type": "Button",
+                    "id": "e78711eb-b435-48cf-a454-bbb9ef46d03e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "802fec1f-199f-4493-a04a-593476ddb972",
+                    "path": "<HID::Bensussen Deutsch & Associates,Inc.(BDA) Core (Plus) Wired Controller>/button7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef62b362-5bc0-4eba-b696-049b4f8c3def",
+                    "path": "<HID::Bensussen Deutsch & Associates,Inc.(BDA) Core (Plus) Wired Controller>/button8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a1243f5-351d-4fda-99a7-43a4c33716ab",
+                    "path": "<HID::Bensussen Deutsch & Associates,Inc.(BDA) Core (Plus) Wired Controller>/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckFront",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3de7cf53-8d13-427e-a409-ac14af8cc23b",
+                    "path": "<HID::Bensussen Deutsch & Associates,Inc.(BDA) Core (Plus) Wired Controller>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CheckBehind",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

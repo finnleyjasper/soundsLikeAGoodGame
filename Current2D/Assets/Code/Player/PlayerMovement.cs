@@ -7,14 +7,14 @@ using System.Numerics;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float moveDistance = 1f; // moves one "tile" per button press
-
-    public LayerMask whatStopsMovement; // things on this layer will stop player movement
-
+    private int tileSize = 1; // moves one "tile" per button press
+    private LayerMask stopsMovementLayer; // things on this layer will stop player movement
     PlayerControl controls; // the action map used to access controller input
 
     void Awake()
     {
+        stopsMovementLayer = LayerMask.GetMask("StopsPlayerMovement");
+
         controls = new PlayerControl();
 
         controls.PlayerMoveInputs.PlayerMoveUp.performed += context => MoveUp();
@@ -35,12 +35,10 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveUp()
     {
-        Debug.Log("D-Pad up pressed");
-
         // if theres no wall in the way, move
-        if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x, transform.position.y + moveDistance), whatStopsMovement))
+        if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x, transform.position.y + tileSize), stopsMovementLayer))
         {
-            transform.position += new UnityEngine.Vector3(0f, moveDistance, 0f);
+            transform.position += new UnityEngine.Vector3(0f, tileSize, 0f);
         }
         else
         {
@@ -50,12 +48,10 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveDown()
     {
-        Debug.Log("D-Pad down pressed");
-
         // if theres no wall in the way, move
-        if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x, transform.position.y - moveDistance), whatStopsMovement))
+        if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x, transform.position.y - tileSize), stopsMovementLayer))
         {
-            transform.position -= new UnityEngine.Vector3(0f, moveDistance, 0f);
+            transform.position -= new UnityEngine.Vector3(0f, tileSize, 0f);
         }
         else
         {
@@ -65,12 +61,10 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveLeft()
     {
-        Debug.Log("D-Pad left pressed");
-
         // if theres no wall in the way, move
-        if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x - moveDistance, transform.position.y), whatStopsMovement))
+        if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x - tileSize, transform.position.y), stopsMovementLayer))
         {
-            transform.position -= new UnityEngine.Vector3(moveDistance, 0f, 0f);
+            transform.position -= new UnityEngine.Vector3(tileSize, 0f, 0f);
         }
         else
         {
@@ -80,12 +74,10 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveRight()
     {
-        Debug.Log("D-Pad right pressed");
-
         // if theres no wall in the way, move
-        if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x + moveDistance, transform.position.y), whatStopsMovement))
+        if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x + tileSize, transform.position.y), stopsMovementLayer))
         {
-            transform.position += new UnityEngine.Vector3(moveDistance, 0f, 0f);
+            transform.position += new UnityEngine.Vector3(tileSize, 0f, 0f);
         }
         else
         {
