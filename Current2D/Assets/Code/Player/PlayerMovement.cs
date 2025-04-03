@@ -7,7 +7,7 @@ using System.Numerics;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private int tileSize = 1; // moves one "tile" per button press
+    private float tileSize = 0.5F; // moves one "tile" per button press
     private LayerMask stopsMovementLayer; // things on this layer will stop player movement
     PlayerControl controls; // the action map used to access controller input
 
@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x, transform.position.y + tileSize), stopsMovementLayer))
         {
             transform.position += new UnityEngine.Vector3(0f, tileSize, 0f);
+            Debug.Log("Up");
         }
         else
         {
@@ -52,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x, transform.position.y - tileSize), stopsMovementLayer))
         {
             transform.position -= new UnityEngine.Vector3(0f, tileSize, 0f);
+            Debug.Log("Down");
         }
         else
         {
@@ -65,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x - tileSize, transform.position.y), stopsMovementLayer))
         {
             transform.position -= new UnityEngine.Vector3(tileSize, 0f, 0f);
+            Debug.Log("Left");
         }
         else
         {
@@ -78,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x + tileSize, transform.position.y), stopsMovementLayer))
         {
             transform.position += new UnityEngine.Vector3(tileSize, 0f, 0f);
+            Debug.Log("Right");
         }
         else
         {
