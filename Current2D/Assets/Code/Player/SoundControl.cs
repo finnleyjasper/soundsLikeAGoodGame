@@ -28,7 +28,7 @@ public class SoundControl : MonoBehaviour
 
     }
 
-        void OnEnable()
+    void OnEnable()
     {
         controls.PlayerSoundSearch.Enable();
     }
