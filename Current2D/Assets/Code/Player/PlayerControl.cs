@@ -143,7 +143,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c34b90b9-0d51-4da3-a467-548d678a11c4"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -165,7 +165,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b229fd4b-d25f-4dce-bf19-a096b45885dc"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -187,7 +187,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8403f4ec-536a-40bd-a8e1-fbd01a369091"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -209,7 +209,7 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""32a14a45-63b5-472b-9790-53117b247252"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -274,8 +274,30 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""10fcd608-49f4-482d-8dbc-f51d1eb72a15"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""ef62b362-5bc0-4eba-b696-049b4f8c3def"",
                     ""path"": ""<HID::Bensussen Deutsch & Associates,Inc.(BDA) Core (Plus) Wired Controller>/button8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abcf46bd-31a0-4c73-b383-cc504f8bd2f8"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -296,6 +318,17 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""007f41f3-3a15-461e-aad0-2f76c2a0379c"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckFront"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3de7cf53-8d13-427e-a409-ac14af8cc23b"",
                     ""path"": ""<HID::Bensussen Deutsch & Associates,Inc.(BDA) Core (Plus) Wired Controller>/button2"",
                     ""interactions"": """",
@@ -304,11 +337,183 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
                     ""action"": ""CheckBehind"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81b9a5ac-a0f3-4483-b5f7-94ebd094998e"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CheckBehind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Rumble"",
+            ""id"": ""879a649d-808d-4fc6-891b-bd50572907c7"",
+            ""actions"": [
+                {
+                    ""name"": ""RumbleAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""f0290cfc-27f5-48b7-adb2-922b89c18754"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9eaa70fd-4636-47aa-a739-26a9b994dfd6"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12b3d3cc-4752-4871-aea4-11f026c24db7"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37b729d8-ec3d-40c2-9ec6-c525bd1f58c5"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3247a3b0-f198-4737-aae6-de6e3700b409"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40021b91-15bb-4d7e-8246-166bfb08da19"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0b01a94-b9c4-4a92-9020-5a73d495930e"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""633f2961-a8bc-4e9b-9efc-81ee0c652bef"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d99cdf17-f7db-449a-b390-277c90a63130"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b458a332-9031-496c-b46b-132e949393c0"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76ec8d95-da81-45c2-b0a0-11bd547d2b08"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b632cb45-ca7d-4123-9a1a-98c2c9f4aa28"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f3014ff-79bf-4834-b46e-1edecdf97ee8"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RumbleAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Controller"",
+            ""bindingGroup"": ""Controller"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // PlayerMoveInputs
         m_PlayerMoveInputs = asset.FindActionMap("PlayerMoveInputs", throwIfNotFound: true);
@@ -322,12 +527,16 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         m_PlayerSoundSearch_CheckRight = m_PlayerSoundSearch.FindAction("CheckRight", throwIfNotFound: true);
         m_PlayerSoundSearch_CheckFront = m_PlayerSoundSearch.FindAction("CheckFront", throwIfNotFound: true);
         m_PlayerSoundSearch_CheckBehind = m_PlayerSoundSearch.FindAction("CheckBehind", throwIfNotFound: true);
+        // Rumble
+        m_Rumble = asset.FindActionMap("Rumble", throwIfNotFound: true);
+        m_Rumble_RumbleAction = m_Rumble.FindAction("RumbleAction", throwIfNotFound: true);
     }
 
     ~@PlayerControl()
     {
         UnityEngine.Debug.Assert(!m_PlayerMoveInputs.enabled, "This will cause a leak and performance issues, PlayerControl.PlayerMoveInputs.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PlayerSoundSearch.enabled, "This will cause a leak and performance issues, PlayerControl.PlayerSoundSearch.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Rumble.enabled, "This will cause a leak and performance issues, PlayerControl.Rumble.Disable() has not been called.");
     }
 
     /// <summary>
@@ -657,6 +866,115 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PlayerSoundSearchActions" /> instance referencing this action map.
     /// </summary>
     public PlayerSoundSearchActions @PlayerSoundSearch => new PlayerSoundSearchActions(this);
+
+    // Rumble
+    private readonly InputActionMap m_Rumble;
+    private List<IRumbleActions> m_RumbleActionsCallbackInterfaces = new List<IRumbleActions>();
+    private readonly InputAction m_Rumble_RumbleAction;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Rumble".
+    /// </summary>
+    public struct RumbleActions
+    {
+        private @PlayerControl m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public RumbleActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Rumble/RumbleAction".
+        /// </summary>
+        public InputAction @RumbleAction => m_Wrapper.m_Rumble_RumbleAction;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Rumble; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="RumbleActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(RumbleActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="RumbleActions" />
+        public void AddCallbacks(IRumbleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_RumbleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_RumbleActionsCallbackInterfaces.Add(instance);
+            @RumbleAction.started += instance.OnRumbleAction;
+            @RumbleAction.performed += instance.OnRumbleAction;
+            @RumbleAction.canceled += instance.OnRumbleAction;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="RumbleActions" />
+        private void UnregisterCallbacks(IRumbleActions instance)
+        {
+            @RumbleAction.started -= instance.OnRumbleAction;
+            @RumbleAction.performed -= instance.OnRumbleAction;
+            @RumbleAction.canceled -= instance.OnRumbleAction;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="RumbleActions.UnregisterCallbacks(IRumbleActions)" />.
+        /// </summary>
+        /// <seealso cref="RumbleActions.UnregisterCallbacks(IRumbleActions)" />
+        public void RemoveCallbacks(IRumbleActions instance)
+        {
+            if (m_Wrapper.m_RumbleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="RumbleActions.AddCallbacks(IRumbleActions)" />
+        /// <seealso cref="RumbleActions.RemoveCallbacks(IRumbleActions)" />
+        /// <seealso cref="RumbleActions.UnregisterCallbacks(IRumbleActions)" />
+        public void SetCallbacks(IRumbleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_RumbleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_RumbleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="RumbleActions" /> instance referencing this action map.
+    /// </summary>
+    public RumbleActions @Rumble => new RumbleActions(this);
+    private int m_ControllerSchemeIndex = -1;
+    /// <summary>
+    /// Provides access to the input control scheme.
+    /// </summary>
+    /// <seealso cref="UnityEngine.InputSystem.InputControlScheme" />
+    public InputControlScheme ControllerScheme
+    {
+        get
+        {
+            if (m_ControllerSchemeIndex == -1) m_ControllerSchemeIndex = asset.FindControlSchemeIndex("Controller");
+            return asset.controlSchemes[m_ControllerSchemeIndex];
+        }
+    }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerMoveInputs" which allows adding and removing callbacks.
     /// </summary>
@@ -728,5 +1046,20 @@ public partial class @PlayerControl: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnCheckBehind(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Rumble" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="RumbleActions.AddCallbacks(IRumbleActions)" />
+    /// <seealso cref="RumbleActions.RemoveCallbacks(IRumbleActions)" />
+    public interface IRumbleActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "RumbleAction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRumbleAction(InputAction.CallbackContext context);
     }
 }

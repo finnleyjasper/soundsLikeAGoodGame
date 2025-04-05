@@ -7,7 +7,7 @@ public class SoundControl : MonoBehaviour
 {
     PlayerControl controls; // the action map used to access controller input
     private LayerMask soundsLayer; // all sounds should be on this layer
-    private int tileSize = 1; // the size of the tiles needed to know how far to check in each direction
+    private float tileSize = 0.5f; // the size of the tiles needed to know how far to check in each direction
 
     void Awake()
     {
@@ -28,7 +28,7 @@ public class SoundControl : MonoBehaviour
 
     }
 
-        void OnEnable()
+    void OnEnable()
     {
         controls.PlayerSoundSearch.Enable();
     }
@@ -51,6 +51,7 @@ public class SoundControl : MonoBehaviour
             try
             {
                 sound.GetComponent<AudioSource>().volume = sound.gameObject.GetComponent<Sound>().defaultVolume; // turn the volume up on this sound
+                sound.GetComponent<AudioSource>().panStereo = -0.8f; // L 80/20 R |Stereo Pan 
             }
             catch
             {
@@ -69,6 +70,7 @@ public class SoundControl : MonoBehaviour
             try
             {
                 sound.GetComponent<AudioSource>().volume = 0; // turn the off when trigger is released
+                sound.GetComponent<AudioSource>().panStereo = 0; // Remove Stereo Pan
             }
             catch
             {
@@ -90,6 +92,7 @@ public class SoundControl : MonoBehaviour
             try
             {
                 sound.GetComponent<AudioSource>().volume = sound.gameObject.GetComponent<Sound>().defaultVolume; // turn the volume up on this sound
+                sound.GetComponent<AudioSource>().panStereo = 0.8f; // L 20/80 R |Stereo Pan 
             }
             catch
             {
@@ -108,6 +111,7 @@ public class SoundControl : MonoBehaviour
             try
             {
                 sound.GetComponent<AudioSource>().volume = 0; // turn the off when trigger is released
+                sound.GetComponent<AudioSource>().panStereo = 0; // Remove Stereo Pan
             }
             catch
             {
@@ -194,6 +198,4 @@ public class SoundControl : MonoBehaviour
             }
         }
     }
-
-
 }

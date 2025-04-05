@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.InputSystem;
 using System.Numerics;
+using UnityEditor;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float tileSize = 0.5F; // moves one "tile" per button press
+    float tileSize = 0.5F; // moves one "tile" per button press
     private LayerMask stopsMovementLayer; // things on this layer will stop player movement
     PlayerControl controls; // the action map used to access controller input
 
