@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class RumbleInputManager : MonoBehaviour
 {
@@ -7,6 +9,8 @@ public class RumbleInputManager : MonoBehaviour
 
     [HideInInspector] public PlayerControl controls;
     private Gamepad pad;
+
+    private Coroutine stopRumbleAfterTimeCoroutine;
 
     private void Awake()
     {
@@ -67,5 +71,43 @@ public class RumbleInputManager : MonoBehaviour
             //stop rumble
             pad.SetMotorSpeeds(0f, 0f);
         }
+    }
+
+    public void RumblePulses(float lowFrequency, float highFrequency, float duration)
+    {
+        //get reference to our Gamepad
+        pad = Gamepad.current;
+
+        //if we have a current Gamepad
+        if (pad != null)
+        {
+            pad.SetMotorSpeeds(lowFrequency, highFrequency);
+            stopRumbleAfterTimeCoroutine = StartCoroutine(TimeStopRumble(duration, pad,lowFrequency,highFrequency));
+        }
+    }
+
+    private IEnumerator TimeStopRumble (float duration, Gamepad pad, float lowFrequency, float highFrequency)
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        pad.SetMotorSpeeds(0f, 0f);
+        elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        pad.SetMotorSpeeds(lowFrequency, highFrequency);
+        elapsedTime = 0f;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        pad.SetMotorSpeeds(0f, 0f);
     }
 }
