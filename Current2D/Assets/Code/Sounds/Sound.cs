@@ -30,7 +30,7 @@ public class Sound : MonoBehaviour
     void Update()
     {
         // checks to see if the player's colliders are on top of this object
-        Collider2D player = Physics2D.OverlapPoint(new UnityEngine.Vector2(gameObject.transform.position.x, gameObject.transform.position.y), playerLayer);
+        //Collider2D player = Physics2D.OverlapPoint(new UnityEngine.Vector2(gameObject.transform.position.x, gameObject.transform.position.y), playerLayer);
 
         // checks to see if any of the player's sound detection colliders are on top of this object
         Collider2D soundcol = Physics2D.OverlapPoint(new UnityEngine.Vector2(gameObject.transform.position.x, gameObject.transform.position.y), playerSoundLayer);
@@ -44,7 +44,8 @@ public class Sound : MonoBehaviour
         }
 
         // if player is on the sound space
-        if (player)
+        // ^^ this shouldnt be a thing - only sound should be heard by useing the up/down/left/right
+       /*  if (player)
         {
             audioSource.volume = defaultVolume/1.7f;
             if (Time.time >= timeLastPlayed + loopDelay && !audioSource.isPlaying)
@@ -64,6 +65,6 @@ public class Sound : MonoBehaviour
                 leaveFlag = false;
                 audioSource.volume = 0;
             }
-        }
+        } */
     }
 }

@@ -5,15 +5,21 @@ using UnityEngine.Tilemaps;
 using UnityEngine.InputSystem;
 using System.Numerics;
 using UnityEditor;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
     float tileSize = 0.5F; // moves one "tile" per button press
     private LayerMask stopsMovementLayer; // things on this layer will stop player movement
-    PlayerControl controls; // the action map used to access controller input
+    public PlayerControl controls; // the action map used to access controller input
+
+    private AudioSource audioSource; // the whoosshh movement sound
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.mute = true;
+        audioSource.playOnAwake = true;
         stopsMovementLayer = LayerMask.GetMask("StopsPlayerMovement");
 
         controls = new PlayerControl();
@@ -39,11 +45,13 @@ public class PlayerMovement : MonoBehaviour
         // if theres no wall in the way, move
         if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x, transform.position.y + tileSize), stopsMovementLayer))
         {
+            MovementSound();
             transform.position += new UnityEngine.Vector3(0f, tileSize, 0f);
             Debug.Log("Up");
         }
         else
         {
+            Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x, transform.position.y + tileSize), stopsMovementLayer).GetComponent<WallSound>().PlaySound();
             Debug.Log("A wall was hit");
         }
     }
@@ -53,11 +61,13 @@ public class PlayerMovement : MonoBehaviour
         // if theres no wall in the way, move
         if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x, transform.position.y - tileSize), stopsMovementLayer))
         {
+            MovementSound();
             transform.position -= new UnityEngine.Vector3(0f, tileSize, 0f);
             Debug.Log("Down");
         }
         else
         {
+            Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x, transform.position.y - tileSize), stopsMovementLayer).GetComponent<WallSound>().PlaySound();
             Debug.Log("A wall was hit");
         }
     }
@@ -67,11 +77,13 @@ public class PlayerMovement : MonoBehaviour
         // if theres no wall in the way, move
         if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x - tileSize, transform.position.y), stopsMovementLayer))
         {
+            MovementSound();
             transform.position -= new UnityEngine.Vector3(tileSize, 0f, 0f);
             Debug.Log("Left");
         }
         else
         {
+            Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x - tileSize, transform.position.y), stopsMovementLayer).GetComponent<WallSound>().PlaySound();
             Debug.Log("A wall was hit");
         }
     }
@@ -81,12 +93,34 @@ public class PlayerMovement : MonoBehaviour
         // if theres no wall in the way, move
         if (!Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x + tileSize, transform.position.y), stopsMovementLayer))
         {
+            MovementSound();
             transform.position += new UnityEngine.Vector3(tileSize, 0f, 0f);
             Debug.Log("Right");
         }
         else
         {
+            Physics2D.OverlapPoint(new UnityEngine.Vector2(transform.position.x + tileSize, transform.position.y), stopsMovementLayer).GetComponent<WallSound>().PlaySound();
             Debug.Log("A wall was hit");
         }
+    }
+
+    void MovementSound()
+    {
+        audioSource.mute = false;
+        Debug.Log("movement sound playing");
+        StartCoroutine(DelayMute());
+    }
+
+
+    IEnumerator DelayMute()
+    {
+        yield return new WaitForSeconds(0.9f);
+        Mute();
+    }
+
+    void Mute()
+    {
+        Debug.Log("movement sound muted");
+        audioSource.mute = true;
     }
 }
