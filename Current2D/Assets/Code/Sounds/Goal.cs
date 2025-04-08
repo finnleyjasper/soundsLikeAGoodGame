@@ -23,14 +23,15 @@ public class Goal : MonoBehaviour
     // for some reason i just *cannot* get this to work :(
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == playerLayer)
+        if (other.gameObject.name == "Player")
         {
-            Debug.Log("yippeee");
+            Debug.Log("collided with " + other.gameObject.name);
+/*             Debug.Log("yippeee");
             // stop player movement
             other.gameObject.GetComponent<PlayerMovement>().controls.Disable();
             // play the audio
             audioSource.Play();
-            // then move the player to the end scene when the audio is done
+            // then move the player to the end scene when the audio is done */
             if (!audioSource.isPlaying)
             {
                 SceneManager.LoadScene("End");

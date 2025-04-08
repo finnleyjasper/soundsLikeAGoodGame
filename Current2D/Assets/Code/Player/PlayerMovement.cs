@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using System.Numerics;
 using UnityEditor;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
         controls.PlayerMoveInputs.PlayerMoveDown.performed += context => MoveDown();
         controls.PlayerMoveInputs.PlayerMoveLeft.performed += context => MoveLeft();
         controls.PlayerMoveInputs.PlayerMoveRight.performed += context => MoveRight();
+    }
+
+    void Update()
+    {
+        GoalReached();
     }
 
     void OnEnable()
@@ -122,5 +128,13 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("movement sound muted");
         audioSource.mute = true;
+    }
+
+    void GoalReached()
+    {
+        if (transform.position.x == -8.25 && transform.position.y == 4.75)
+        {
+            SceneManager.LoadScene("End");
+        }
     }
 }
